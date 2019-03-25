@@ -31,8 +31,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.password) {
             startActivity(new Intent(this, password.class));
-        } else if (item.getItemId() == R.id.logout) {
-            startActivity(new Intent(this, logout.class));
         }
         return true;
     }
