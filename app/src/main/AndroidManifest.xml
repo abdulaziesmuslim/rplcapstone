@@ -11,10 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".TodoListEmployee"></activity>
         <activity
             android:name=".TodoListAdmin"
             android:label="@string/title_activity_todo_list_admin"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ScreenUser" />
         <activity android:name=".loginscreen" />
         <activity
