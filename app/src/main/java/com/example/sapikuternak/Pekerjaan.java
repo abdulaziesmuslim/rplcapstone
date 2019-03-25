@@ -1,12 +1,10 @@
 package com.example.sapikuternak;
 
-import java.io.Serializable;
-
 public class Pekerjaan {
 
     public String key, id, text;
 
-    public Pekerjaan (){}
+    public Pekerjaan(){}
 
     public Pekerjaan (String key, String id, String text){
         this.key = key;
