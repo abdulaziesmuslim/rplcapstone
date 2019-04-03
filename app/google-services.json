@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "214550339704",
+    "firebase_url": "https://sapikuternak2.firebaseio.com",
+    "project_id": "sapikuternak2",
+    "storage_bucket": "sapikuternak2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214550339704:android:062e2b1bc0986fd5",
+        "android_client_info": {
+          "package_name": "com.example.sapikuternak"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "214550339704-lscel9vmet8g27aia24qqgj89nnm0lie.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sapikuternak",
+            "certificate_hash": "7fa725675062b19c43ffde1a6c3e17fd3cd3849c"
+          }
+        },
+        {
+          "client_id": "214550339704-t2q62up46ejbpmdgt0ul44vv00ia05th.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhmn9k7FzLR6ukYVuTwKvH4YEe6pymYm0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "214550339704-t2q62up46ejbpmdgt0ul44vv00ia05th.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
