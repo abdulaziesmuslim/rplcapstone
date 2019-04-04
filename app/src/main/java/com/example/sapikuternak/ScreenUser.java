@@ -36,4 +36,9 @@ public class ScreenUser extends AppCompatActivity {
         Intent todo = new Intent(ScreenUser.this, TodoListAdmin.class);
         startActivity(todo);
     }
+
+    public void reporting(View view) {
+        Intent ReportingLayout = new Intent(ScreenUser.this, ReportingLayout.class);
+        startActivity(ReportingLayout);
+    }
 }
