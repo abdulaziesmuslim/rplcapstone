@@ -11,8 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ReportingLayout"></activity>
+        <activity android:name=".ReportingLayout"/>
         <activity android:name=".TodoListEmployee" />
+        <activity android:name=".ReportAdmin"/>
         <activity
             android:name=".TodoListAdmin"
             android:label="@string/title_activity_todo_list_admin"
