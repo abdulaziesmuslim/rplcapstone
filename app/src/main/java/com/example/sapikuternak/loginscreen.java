@@ -62,7 +62,17 @@ public class loginscreen extends AppCompatActivity {
     }
 
     public void signIn(View view) {
-        signIn(mUsername.getText().toString(),mPassword.getText().toString());
+//        signIn(mUsername.getText().toString(),mPassword.getText().toString());
+
+        if (mUsername.getText().toString().equals("adminsapikuternak@gmail.com") &&
+        mPassword.getText().toString().equals("123456")){
+            Intent admin = new Intent(loginscreen.this, ScreenAdmin.class);
+            startActivity(admin);
+        }
+        else{
+            Intent user = new Intent(loginscreen.this, ScreenUser.class);
+            startActivity(user);
+        }
 
     }
 
