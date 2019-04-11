@@ -12,12 +12,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.sapikuternak.Pekerjaan;
@@ -38,7 +40,7 @@ public class TodoListAdmin extends AppCompatActivity {
     private TodoListAdapter mAdapter;
 
     EditText editTextJob;
-    ArrayList<Pekerjaan> list;
+    ArrayList<TodoList> list;
 
 
     DatabaseReference databaseTodoList;
@@ -86,17 +88,18 @@ public class TodoListAdmin extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         String job = userInput.getText().toString();
+                        TodoList jobs = new TodoList(job);
 
                         if(!TextUtils.isEmpty(job)){
                             String aa = databaseTodoList.push().getKey();
 
 //            Job j = new Job(id, job);
 
-                            databaseTodoList.child("Pekerjaan").child(aa).setValue(job);
+                            databaseTodoList.child("Pekerjaan").child(aa).setValue(jobs);
 
                             Toast.makeText(getApplicationContext(), "Pekerjaan ditambahkan", Toast.LENGTH_SHORT).show();
 
-                            finish();
+//                            finish();
                         }
                         else{
                             Toast.makeText(getApplicationContext(), "Silahkan isi pekerjaan", Toast.LENGTH_SHORT).show();
@@ -118,10 +121,38 @@ public class TodoListAdmin extends AppCompatActivity {
 //            mWordList.addLast(" Tugas " + i);
 //        }
 
-        mRecyclerView = findViewById(R.id.recyclerview);
-        mAdapter = new TodoListAdapter(this, mWordList);
-        mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        initView();
+        setGridLayout();
+
+        //FIREBASE
+        DatabaseReference db = FirebaseDatabase.getInstance().getReference("Pekerjaan");
+        db.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                list = new ArrayList<>();
+                list.clear();
+                for(DataSnapshot ds : dataSnapshot.getChildren()){
+                    String Pekerjaan = ds.child("todo").getValue().toString();
+                    Log.d("mencoba",Pekerjaan);
+                    TodoList todoList = new TodoList(Pekerjaan);
+                    list.add(todoList);
+                }
+
+                mAdapter = new TodoListAdapter(TodoListAdmin.this,list);
+                mRecyclerView.setAdapter(mAdapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+//        mRecyclerView = findViewById(R.id.recyclerview);
+//        mAdapter = new TodoListAdapter(this, mWordList);
+//        mRecyclerView.setAdapter(mAdapter);
+//        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         databaseTodoList.child("Pekerjaan").addValueEventListener(new ValueEventListener() {
             @Override
@@ -173,6 +204,14 @@ public class TodoListAdmin extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         return true;
+    }
+
+    public void initView(){
+        mRecyclerView = findViewById(R.id.recyclerview);
+    }
+
+    private  void setGridLayout(){
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayout.VERTICAL, false));
     }
 
 }
