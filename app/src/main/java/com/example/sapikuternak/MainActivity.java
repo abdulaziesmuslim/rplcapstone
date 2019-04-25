@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.password) {
-            startActivity(new Intent(this, password.class));
+            startActivity(new Intent(this, Password.class));
         }
         return true;
     }
