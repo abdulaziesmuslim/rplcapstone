@@ -42,7 +42,7 @@ public class loginscreen extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = mAuth.getCurrentUser();
                 if (user != null) {
-                    Intent move = new Intent(loginscreen.this, ScreenUser.class);
+                    Intent move = new Intent(loginscreen.this, ScreenAdmin.class);
                     move.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(move);
                     finish();
@@ -62,17 +62,17 @@ public class loginscreen extends AppCompatActivity {
     }
 
     public void signIn(View view) {
-//        signIn(mUsername.getText().toString(),mPassword.getText().toString());
+        signIn(mUsername.getText().toString(),mPassword.getText().toString());
 
-        if (mUsername.getText().toString().equals("adminsapikuternak@gmail.com") &&
-        mPassword.getText().toString().equals("123456")){
-            Intent admin = new Intent(loginscreen.this, ScreenAdmin.class);
-            startActivity(admin);
-        }
-        else{
-            Intent user = new Intent(loginscreen.this, ScreenUser.class);
-            startActivity(user);
-        }
+//        if (mUsername.getText().toString().equals("adminsapikuternak@gmail.com") &&
+//        mPassword.getText().toString().equals("123456")){
+//            Intent admin = new Intent(loginscreen.this, ScreenAdmin.class);
+//            startActivity(admin);
+//        }
+//        else{
+//            Intent user = new Intent(loginscreen.this, ScreenUser.class);
+//            startActivity(user);
+//        }
 
     }
 

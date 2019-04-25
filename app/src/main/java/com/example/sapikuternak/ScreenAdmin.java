@@ -26,6 +26,12 @@ public class ScreenAdmin extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.password:
+                Intent changepassword = new Intent(ScreenAdmin.this, Password.class);
+                startActivity(changepassword);
+                break;
+        }
         return true;
 
     }
