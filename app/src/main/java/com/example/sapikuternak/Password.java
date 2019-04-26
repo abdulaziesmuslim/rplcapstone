@@ -30,7 +30,7 @@ public class Password extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         dialog = new ProgressDialog(this);
 
-        findViewById(R.id.button_save).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.button_change).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 changePassword();
