@@ -2,4 +2,13 @@
     <string name="app_name">sapikuternak</string>
     <string name="title_activity_todo_list_admin">TodoListAdmin</string>
     <string name="title_activity_todo_list_admin_ayam">TodoListAdminAyam</string>
+
+    <string-array name="listternak">
+        <item> Sapi </item>
+        <item> Ayam </item>
+    </string-array>
+    <string-array name="listhasilternak">
+        <item> Susu </item>
+        <item> Telur </item>
+    </string-array>
 </resources>
