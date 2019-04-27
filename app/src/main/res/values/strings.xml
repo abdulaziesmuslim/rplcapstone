@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">sapikuternak</string>
     <string name="title_activity_todo_list_admin">TodoListAdmin</string>
+    <string name="title_activity_todo_list_admin_ayam">TodoListAdminAyam</string>
 </resources>
