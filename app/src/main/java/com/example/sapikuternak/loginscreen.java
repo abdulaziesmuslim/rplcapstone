@@ -41,6 +41,7 @@ public class loginscreen extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = mAuth.getCurrentUser();
                 if (user != null) {
+
                     Intent move = new Intent(loginscreen.this, pilihhewanuser.class);
                     move.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(move);

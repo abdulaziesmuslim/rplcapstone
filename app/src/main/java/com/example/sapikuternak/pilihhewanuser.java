@@ -19,7 +19,7 @@ public class pilihhewanuser extends AppCompatActivity {
     }
 
     public void pilihAyam(View view) {
-        Intent ayam = new Intent(pilihhewanuser.this, ScreenUser.class);
+        Intent ayam = new Intent(pilihhewanuser.this, ScreenUserAyam.class);
         startActivity(ayam);
     }
 }

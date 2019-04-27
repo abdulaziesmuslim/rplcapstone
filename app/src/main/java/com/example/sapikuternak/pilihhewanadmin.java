@@ -18,7 +18,7 @@ public class pilihhewanadmin extends AppCompatActivity {
     }
 
     public void pilihAyam(View view) {
-        Intent ayam = new Intent(pilihhewanadmin.this, ScreenAdmin.class);
+        Intent ayam = new Intent(pilihhewanadmin.this, ScreenAdminAyam.class);
         startActivity(ayam);
     }
 }
