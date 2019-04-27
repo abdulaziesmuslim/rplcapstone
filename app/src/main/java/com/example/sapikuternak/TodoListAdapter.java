@@ -25,7 +25,9 @@ public class TodoListAdapter extends RecyclerView.Adapter<TodoListAdapter.WordVi
     @NonNull
     @Override
     public TodoListAdapter.WordViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return new WordViewHolder(LayoutInflater.from(mContext).inflate(R.layout.cardview, viewGroup, false));
+        return new WordViewHolder(LayoutInflater.from(mContext).inflate(R.layout.cardview,
+                viewGroup,
+                false));
     }
 
     @Override

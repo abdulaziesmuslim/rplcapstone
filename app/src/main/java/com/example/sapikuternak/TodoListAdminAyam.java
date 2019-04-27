@@ -1,11 +1,9 @@
 package com.example.sapikuternak;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.text.TextUtilsCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,14 +13,12 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.example.sapikuternak.Pekerjaan;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,7 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class TodoListAdmin extends AppCompatActivity {
+public class TodoListAdminAyam extends AppCompatActivity {
 
     private final LinkedList<String> mWordList = new LinkedList<>();
 
@@ -66,7 +62,7 @@ public class TodoListAdmin extends AppCompatActivity {
 //                mRecyclerView.smoothScrollToPosition(wordListSize);
 
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                        TodoListAdmin.this);
+                        TodoListAdminAyam.this);
 
                 alertDialogBuilder.setTitle("Masukkan Pekerjaan");
 
@@ -95,7 +91,7 @@ public class TodoListAdmin extends AppCompatActivity {
 
 //            Job j = new Job(id, job);
 
-                            databaseTodoList.child("Pekerjaan Ternak Sapi").child(aa).setValue(jobs);
+                            databaseTodoList.child("Pekerjaan Ternak Ayam").child(aa).setValue(jobs);
 
                             Toast.makeText(getApplicationContext(), "Pekerjaan ditambahkan", Toast.LENGTH_SHORT).show();
 
@@ -138,7 +134,7 @@ public class TodoListAdmin extends AppCompatActivity {
                     list.add(todoList);
                 }
 
-                mAdapter = new TodoListAdapter(TodoListAdmin.this,list);
+                mAdapter = new TodoListAdapter(TodoListAdminAyam.this,list);
                 mRecyclerView.setAdapter(mAdapter);
             }
 
