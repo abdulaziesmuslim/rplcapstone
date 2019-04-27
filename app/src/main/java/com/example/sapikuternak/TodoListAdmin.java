@@ -94,7 +94,6 @@ public class TodoListAdmin extends AppCompatActivity {
                             String aa = databaseTodoList.push().getKey();
 
 //            Job j = new Job(id, job);
-
                             databaseTodoList.child("Pekerjaan Ternak Sapi").child(aa).setValue(jobs);
 
                             Toast.makeText(getApplicationContext(), "Pekerjaan ditambahkan", Toast.LENGTH_SHORT).show();

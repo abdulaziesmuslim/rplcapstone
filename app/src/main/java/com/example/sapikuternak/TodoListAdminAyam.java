@@ -44,7 +44,7 @@ public class TodoListAdminAyam extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_todo_list_admin);
+        setContentView(R.layout.activity_todo_list_admin_ayam);
 //        Toolbar toolbar = findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 
@@ -77,21 +77,21 @@ public class TodoListAdminAyam extends AppCompatActivity {
                 final EditText userInput = (EditText) promptsView
                         .findViewById(R.id.inputJob);
 
-                final Button asd = (Button) promptsView
+                final Button def = (Button) promptsView
                         .findViewById(R.id.submit);
 
-                asd.setOnClickListener(new View.OnClickListener() {
+                def.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         String job = userInput.getText().toString();
                         TodoList jobs = new TodoList(job);
 
                         if(!TextUtils.isEmpty(job)){
-                            String aa = databaseTodoList.push().getKey();
+                            String bb = databaseTodoList.push().getKey();
 
 //            Job j = new Job(id, job);
 
-                            databaseTodoList.child("Pekerjaan Ternak Ayam").child(aa).setValue(jobs);
+                            databaseTodoList.child("Pekerjaan Ternak Ayam").child(bb).setValue(jobs);
 
                             Toast.makeText(getApplicationContext(), "Pekerjaan ditambahkan", Toast.LENGTH_SHORT).show();
 

@@ -10,13 +10,14 @@ import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class ScreenAdmin extends AppCompatActivity {
+public class ScreenUserAyam extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_screen_admin);
+        setContentView(R.layout.activity_screen_user_ayam);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -30,7 +31,7 @@ public class ScreenAdmin extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.password:
-                Intent changepassword = new Intent(ScreenAdmin.this, Password.class);
+                Intent changepassword = new Intent(ScreenUserAyam.this, Password.class);
                 startActivity(changepassword);
                 break;
             case R.id.logout:
@@ -40,17 +41,16 @@ public class ScreenAdmin extends AppCompatActivity {
                 break;
         }
         return true;
-
     }
 
     //imageButton To Do List
-    public void todolist(View view) {
-        Intent todo = new Intent(ScreenAdmin.this, TodoListAdmin.class);
+    public void todolistAyam(View view) {
+        Intent todo = new Intent(ScreenUserAyam.this, TodoListEmployeeAyam.class);
         startActivity(todo);
     }
 
-    public void reporting(View view) {
-        Intent ReportingLayout = new Intent(ScreenAdmin.this, ReportAdmin.class);
+    public void reportingAyam(View view) {
+        Intent ReportingLayout = new Intent(ScreenUserAyam.this, ReportingLayout.class);
         startActivity(ReportingLayout);
     }
 }

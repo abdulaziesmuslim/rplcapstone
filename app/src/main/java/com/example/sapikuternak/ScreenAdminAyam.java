@@ -8,12 +8,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class ScreenAdminAyam extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_screen_admin);
+        setContentView(R.layout.activity_screen_admin_ayam);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -31,6 +33,11 @@ public class ScreenAdminAyam extends AppCompatActivity {
                 Intent changepassword = new Intent(ScreenAdminAyam.this, Password.class);
                 startActivity(changepassword);
                 break;
+            case R.id.logout:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent (this, loginscreen.class));
+                finish();
+                break;
         }
         return true;
 
@@ -38,8 +45,8 @@ public class ScreenAdminAyam extends AppCompatActivity {
 
     //imageButton To Do List
     public void todolistAyam(View view) {
-        Intent todo = new Intent(ScreenAdminAyam.this, TodoListAdminAyam.class);
-        startActivity(todo);
+        Intent todoayam = new Intent(ScreenAdminAyam.this, TodoListAdminAyam.class);
+        startActivity(todoayam);
     }
 
     public void reportingAyam(View view) {
