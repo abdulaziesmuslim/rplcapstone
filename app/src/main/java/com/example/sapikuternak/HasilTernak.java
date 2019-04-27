@@ -10,4 +10,5 @@ public class HasilTernak extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hasil_ternak);
     }
+    //code here
 }
