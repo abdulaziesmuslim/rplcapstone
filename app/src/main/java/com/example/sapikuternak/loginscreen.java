@@ -95,11 +95,13 @@ public class loginscreen extends AppCompatActivity {
                             if (mUsername.getText().toString().equals("adminsapikuternak@gmail.com")
                                     && mPassword.getText().toString().equals("654321")) {
                                 Intent admin = new Intent(loginscreen.this,
-                                        pilihhewanadmin.class);
+                                        Dashboard.class);
+                                admin.putExtra("isAdmin", true);
                                 startActivity(admin);
                             } else {
                                 Intent user = new Intent(loginscreen.this,
-                                        pilihhewanuser.class);
+                                        Dashboard.class);
+                                user.putExtra("isAdmin", false);
                                 startActivity(user);
                             }
 

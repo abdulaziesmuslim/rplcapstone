@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ViewTernakActivity"></activity>
+        <activity android:name=".Dashboard"></activity>
         <activity android:name=".HasilTernak" />
         <activity android:name=".ScreenUserAyam" />
         <activity android:name=".pilihhewanuser" />
