@@ -8,6 +8,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class ScreenUser extends AppCompatActivity {
 
     @Override
@@ -27,13 +29,23 @@ public class ScreenUser extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.password:
+                Intent changepassword = new Intent(ScreenUser.this, Password.class);
+                startActivity(changepassword);
+                break;
+            case R.id.logout:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent (this, loginscreen.class));
+                finish();
+                break;
+        }
         return true;
-
     }
 
     //imageButton To Do List
     public void todolist(View view) {
-        Intent todo = new Intent(ScreenUser.this, TodoListAdmin.class);
+        Intent todo = new Intent(ScreenUser.this, TodoListEmployee.class);
         startActivity(todo);
     }
 

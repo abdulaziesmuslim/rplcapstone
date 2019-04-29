@@ -11,8 +11,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ReportingLayout"></activity>
+        <activity android:name=".HasilTernak"></activity>
+        <activity android:name=".ScreenUserAyam" />
+        <activity android:name=".pilihhewanuser" />
+        <activity android:name=".pilihhewanadmin" />
+        <activity android:name=".TodoListEmployeeAyam" />
+        <activity android:name=".ScreenAdminAyam" />
+        <activity
+            android:name=".TodoListAdminAyam"
+            android:label="@string/title_activity_todo_list_admin_ayam"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Password" />
+        <activity android:name=".ScreenAdmin" />
+        <activity android:name=".ReportingLayout" />
         <activity android:name=".TodoListEmployee" />
+        <activity android:name=".ReportAdmin" />
         <activity
             android:name=".TodoListAdmin"
             android:label="@string/title_activity_todo_list_admin"

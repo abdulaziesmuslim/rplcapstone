@@ -25,7 +25,6 @@ public class loginscreen extends AppCompatActivity {
     FirebaseAuth.AuthStateListener listener;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +41,8 @@ public class loginscreen extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = mAuth.getCurrentUser();
                 if (user != null) {
-                    Intent move = new Intent(loginscreen.this, ScreenUser.class);
+
+                    Intent move = new Intent(loginscreen.this, pilihhewanuser.class);
                     move.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(move);
                     finish();
@@ -62,7 +62,17 @@ public class loginscreen extends AppCompatActivity {
     }
 
     public void signIn(View view) {
-        signIn(mUsername.getText().toString(),mPassword.getText().toString());
+        signIn(mUsername.getText().toString(), mPassword.getText().toString());
+
+//        if (mUsername.getText().toString().equals("adminsapikuternak@gmail.com") &&
+//        mPassword.getText().toString().equals("123456")){
+//            Intent admin = new Intent(loginscreen.this, ScreenAdmin.class);
+//            startActivity(admin);
+//        }
+//        else{
+//            Intent user = new Intent(loginscreen.this, ScreenUser.class);
+//            startActivity(user);
+//        }
 
     }
 
@@ -82,10 +92,21 @@ public class loginscreen extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithEmail:success");
-                            Intent aa = new Intent(loginscreen.this,MainActivity.class);
-                            startActivity(aa);
-                            FirebaseUser user = mAuth.getCurrentUser();
+                            if (mUsername.getText().toString().equals("adminsapikuternak@gmail.com")
+                                    && mPassword.getText().toString().equals("654321")) {
+                                Intent admin = new Intent(loginscreen.this,
+                                        pilihhewanadmin.class);
+                                startActivity(admin);
+                            } else {
+                                Intent user = new Intent(loginscreen.this,
+                                        pilihhewanuser.class);
+                                startActivity(user);
+                            }
+
+//                            Log.d(TAG, "signInWithEmail:success");
+//                            Intent aa = new Intent(loginscreen.this,MainActivity.class);
+//                            startActivity(aa);
+//                            FirebaseUser user = mAuth.getCurrentUser();
 
 //                            updateUI(user);
                         } else {
@@ -98,7 +119,8 @@ public class loginscreen extends AppCompatActivity {
 
                         // [START_EXCLUDE]
                         if (!task.isSuccessful()) {
-                            Toast.makeText(loginscreen.this,"Gagal",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(loginscreen.this, "Gagal",
+                                    Toast.LENGTH_SHORT).show();
                         }
                         hideProgressDialog();
                         // [END_EXCLUDE]
