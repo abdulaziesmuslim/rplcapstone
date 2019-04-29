@@ -3,6 +3,7 @@ package com.example.sapikuternak;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.text.TextUtilsCompat;
@@ -23,6 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.sapikuternak.Pekerjaan;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -56,6 +58,11 @@ public class TodoListAdmin extends AppCompatActivity {
 
         list = new ArrayList<>();
 
+        mRecyclerView = findViewById(R.id.recyclerview);
+        mAdapter = new TodoListAdapter(this, list);
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +72,7 @@ public class TodoListAdmin extends AppCompatActivity {
 //                mRecyclerView.getAdapter().notifyItemInserted(wordListSize);
 //                mRecyclerView.smoothScrollToPosition(wordListSize);
 
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                         TodoListAdmin.this);
 
                 alertDialogBuilder.setTitle("Masukkan Pekerjaan");
@@ -74,27 +81,26 @@ public class TodoListAdmin extends AppCompatActivity {
                 LayoutInflater li = getLayoutInflater();
                 View promptsView = li.inflate(R.layout.dialog, null);
                 alertDialogBuilder.setView(promptsView);
-
-                // set prompts.xml to alertdialog builder
-                alertDialogBuilder.setView(promptsView);
+                final AlertDialog alertDialog = alertDialogBuilder.create();
 
                 final EditText userInput = (EditText) promptsView
                         .findViewById(R.id.inputJob);
 
-                final Button asd = (Button) promptsView
+                final Button def = (Button) promptsView
                         .findViewById(R.id.submit);
 
-                asd.setOnClickListener(new View.OnClickListener() {
+                def.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         String job = userInput.getText().toString();
                         TodoList jobs = new TodoList(job);
 
                         if(!TextUtils.isEmpty(job)){
-                            String aa = databaseTodoList.push().getKey();
+                            String bb = databaseTodoList.push().getKey();
 
 //            Job j = new Job(id, job);
-                            databaseTodoList.child("Pekerjaan Ternak Sapi").child(aa).setValue(jobs);
+
+                            databaseTodoList.child("Pekerjaan Ternak Sapi").child(bb).setValue(jobs);
 
                             Toast.makeText(getApplicationContext(), "Pekerjaan ditambahkan", Toast.LENGTH_SHORT).show();
 
@@ -103,12 +109,13 @@ public class TodoListAdmin extends AppCompatActivity {
                         else{
                             Toast.makeText(getApplicationContext(), "Silahkan isi pekerjaan", Toast.LENGTH_SHORT).show();
                         }
+                        alertDialog.dismiss();
+
                     }
                 });
 
                 // set dialog message
                 // create alert dialog
-                AlertDialog alertDialog = alertDialogBuilder.create();
 
                 // show it
                 alertDialog.show();
@@ -124,21 +131,29 @@ public class TodoListAdmin extends AppCompatActivity {
         setGridLayout();
 
         //FIREBASE
-        DatabaseReference db = FirebaseDatabase.getInstance().getReference("Pekerjaan");
-        db.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                list = new ArrayList<>();
-                list.clear();
-                for(DataSnapshot ds : dataSnapshot.getChildren()){
-                    String Pekerjaan = ds.child("todo").getValue().toString();
-                    Log.d("mencoba",Pekerjaan);
-                    TodoList todoList = new TodoList(Pekerjaan);
-                    list.add(todoList);
-                }
+        DatabaseReference db = FirebaseDatabase.getInstance().getReference("Pekerjaan Ternak Sapi" );
 
-                mAdapter = new TodoListAdapter(TodoListAdmin.this,list);
-                mRecyclerView.setAdapter(mAdapter);
+        db.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                TodoList baru= dataSnapshot.getValue(TodoList.class);
+                list.add(baru);
+                mAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
             }
 
             @Override
@@ -148,38 +163,6 @@ public class TodoListAdmin extends AppCompatActivity {
         });
 
 
-//        mRecyclerView = findViewById(R.id.recyclerview);
-//        mAdapter = new TodoListAdapter(this, mWordList);
-//        mRecyclerView.setAdapter(mAdapter);
-//        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        databaseTodoList.child("Pekerjaan").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                list.clear();
-//                for (DataSnapshot data : dataSnapshot.getChildren()){
-//                    Pekerjaan aa =  data.getValue(Pekerjaan.class);
-//                    aa.key = data.getKey();
-//                    list.add(aa);
-//                    mAdapter.notifyDataSetChanged();
-//                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-//        editTextJob = (EditText)findViewById(R.id.job_item);
-//        buttonSubmit = (Button)findViewById(R.id.submit);
-//
-//        buttonSubmit.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View view){
-//                addJob();
-//            }
-//        });
     }
     private void addJob(){
         String job = editTextJob.getText().toString();
