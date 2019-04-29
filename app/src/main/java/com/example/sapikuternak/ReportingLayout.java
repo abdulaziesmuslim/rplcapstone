@@ -1,25 +1,66 @@
 package com.example.sapikuternak;
 
+import android.app.Activity;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 public class ReportingLayout extends AppCompatActivity {
+    FirebaseFirestore database = FirebaseFirestore.getInstance();
     ImageView gambar;
+    private Button btSubmit;
+    private EditText etReport1;
+    private EditText etReport2;
+    private EditText etReport3;
+    private EditText etDeskripsi;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reporting_layout);
         gambar = findViewById(R.id.gambar);
+        etReport1 = (EditText) findViewById(R.id.report1);
+        etReport2 = (EditText) findViewById(R.id.report2);
+        etReport3 = (EditText) findViewById(R.id.report3);
+        etDeskripsi = (EditText) findViewById(R.id.description);
+        btSubmit = (Button) findViewById(R.id.ononon);
+
+        btSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!isEmpty(etReport1.getText().toString()) && !isEmpty(etReport2.getText().toString()) && !isEmpty(etReport3.getText().toString()) !isEmpty(etDeskripsi.getText().toString()))
+                    submitReport(new Report(etReport1.getText().toString(), etReport2.getText().toString(), etReport3.getText().toString(), etDeskripsi.getText().toString()));
+                else
+                    Snackbar.make(findViewById(R.id.bt_submit), "Data tidak boleh kosong", Snackbar.LENGTH_LONG).show();
+
+                InputMethodManager imm = (InputMethodManager)
+                        getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(
+                        etReport1.getWindowToken(), 0);
+            }
+        });
+
     }
 
     public void submit(View view) {
@@ -54,5 +95,36 @@ public class ReportingLayout extends AppCompatActivity {
         }else {
             Toast.makeText(ReportingLayout.this, "You haven't picked Image",Toast.LENGTH_LONG).show();
         }
+
     }
+
+    private boolean isEmpty(String s) {
+        return TextUtils.isEmpty(s);
+    }
+
+    private void updateBarang(Report report) {
+        // kodingan untuk next tutorial ya :p
+    }
+
+    private void submitReport(Report report) {
+        /**
+         * Ini adalah kode yang digunakan untuk mengirimkan data ke Firebase Realtime Database
+         * dan juga kita set onSuccessListener yang berisi kode yang akan dijalankan
+         * ketika data berhasil ditambahkan
+         */
+        database.child("report").push().setValue(report).addOnSuccessListener(this, new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                etReport1.setText("");
+                etReport2.setText("");
+                etReport3.setText("");
+                etDeskripsi.setText("");
+                Snackbar.make(findViewById(R.id.bt_submit), "Data berhasil ditambahkan", Snackbar.LENGTH_LONG).show();
+            }
+        });
+    }
+
+
+
+
 }
