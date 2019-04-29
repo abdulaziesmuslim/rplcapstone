@@ -53,4 +53,9 @@ public class ScreenUser extends AppCompatActivity {
         Intent ReportingLayout = new Intent(ScreenUser.this, ReportingLayout.class);
         startActivity(ReportingLayout);
     }
+
+    public void hasilternak(View view) {
+        Intent hasilternak = new Intent(ScreenUser.this, HasilTernak.class);
+        startActivity(hasilternak);
+    }
 }
