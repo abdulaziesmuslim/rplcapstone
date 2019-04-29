@@ -53,4 +53,9 @@ public class ScreenUserAyam extends AppCompatActivity {
         Intent ReportingLayout = new Intent(ScreenUserAyam.this, ReportingLayout.class);
         startActivity(ReportingLayout);
     }
+
+    public void hasilternak(View view) {
+        Intent hasilternak = new Intent(ScreenUserAyam.this, HasilTernak.class);
+        startActivity(hasilternak);
+    }
 }
