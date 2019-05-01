@@ -50,6 +50,7 @@
             android:text="Admin"
             android:textColor="#FCFFFD"
             android:textSize="12dp" />
+
     </LinearLayout>
 
     <ImageView
@@ -83,6 +84,19 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:srcCompat="@drawable/report"
         android:onClick="reporting"/>
+
+    <ImageView
+        android:id="@+id/hasilternak"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_todolist"
+        app:srcCompat="@drawable/hasilternak" />
 
     <TextView
         android:id="@+id/tv_todolist"
@@ -118,6 +132,24 @@
         app:layout_constraintHorizontal_bias="0.76"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/report" />
+
+    <TextView
+        android:id="@+id/tv_hasilternak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Hasil Ternak"
+        android:textColor="#036B3F"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.228"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hasilternak"
+        app:layout_constraintVertical_bias="0.02" />
 
 
 </android.support.constraint.ConstraintLayout>
