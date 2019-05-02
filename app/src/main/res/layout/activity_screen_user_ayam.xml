@@ -7,6 +7,32 @@
     android:layout_height="match_parent"
     android:background="#D5E0D9">
 
+    <TextView
+        android:id="@+id/editayamuser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Edit Jumlah"
+        android:textColor="#036B3F"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.792"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hasilternak"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="89dp"
+        android:layout_height="88dp"
+        app:srcCompat="@drawable/hewanayam"
+        tools:layout_editor_absoluteX="255dp"
+        tools:layout_editor_absoluteY="512dp" />
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
@@ -134,7 +160,7 @@
         app:layout_constraintTop_toBottomOf="@+id/report" />
 
     <TextView
-        android:id="@+id/tv_hasilternak"
+        android:id="@+id/editayamadmin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
