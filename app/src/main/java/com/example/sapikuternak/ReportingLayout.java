@@ -49,11 +49,20 @@ public class ReportingLayout extends AppCompatActivity {
         btSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!isEmpty(etReport1.getText().toString()) && !isEmpty(etReport2.getText().toString()) && !isEmpty(etReport3.getText().toString()) !isEmpty(etDeskripsi.getText().toString()))
-                    submitReport(new Report(etReport1.getText().toString(), etReport2.getText().toString(), etReport3.getText().toString(), etDeskripsi.getText().toString()));
-                else
-                    Snackbar.make(findViewById(R.id.bt_submit), "Data tidak boleh kosong", Snackbar.LENGTH_LONG).show();
+                if(!isEmpty(etReport1.getText().toString()) &&
+                        !isEmpty(etReport2.getText().toString()) &&
+                        !isEmpty(etReport3.getText().toString()) &&
+                        !isEmpty(etDeskripsi.getText().toString())) {
 
+                    submitReport(new Report(etReport1.getText().toString(),
+                            etReport2.getText().toString(),
+                            etReport3.getText().toString(),
+                            etDeskripsi.getText().toString()));
+                }
+                else {
+                    Toast.makeText(ReportingLayout.this,"Data tidak boleh kosong",
+                            Toast.LENGTH_SHORT).show();
+                }
                 InputMethodManager imm = (InputMethodManager)
                         getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(
@@ -89,11 +98,13 @@ public class ReportingLayout extends AppCompatActivity {
                 gambar.setImageBitmap(selectedImage);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
-                Toast.makeText(ReportingLayout.this, "Something went wrong", Toast.LENGTH_LONG).show();
+                Toast.makeText(ReportingLayout.this, "Something went wrong",
+                        Toast.LENGTH_LONG).show();
             }
 
         }else {
-            Toast.makeText(ReportingLayout.this, "You haven't picked Image",Toast.LENGTH_LONG).show();
+            Toast.makeText(ReportingLayout.this, "You haven't picked Image",
+                    Toast.LENGTH_LONG).show();
         }
 
     }
@@ -107,21 +118,17 @@ public class ReportingLayout extends AppCompatActivity {
     }
 
     private void submitReport(Report report) {
-        /**
-         * Ini adalah kode yang digunakan untuk mengirimkan data ke Firebase Realtime Database
-         * dan juga kita set onSuccessListener yang berisi kode yang akan dijalankan
-         * ketika data berhasil ditambahkan
-         */
-        database.child("report").push().setValue(report).addOnSuccessListener(this, new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                etReport1.setText("");
-                etReport2.setText("");
-                etReport3.setText("");
-                etDeskripsi.setText("");
-                Snackbar.make(findViewById(R.id.bt_submit), "Data berhasil ditambahkan", Snackbar.LENGTH_LONG).show();
-            }
-        });
+//        database.child("report").push().setValue(report).addOnSuccessListener(this, new OnSuccessListener<Void>() {
+//            @Override
+//            public void onSuccess(Void aVoid) {
+//                etReport1.setText("");
+//                etReport2.setText("");
+//                etReport3.setText("");
+//                etDeskripsi.setText("");
+//                Toast.makeText(ReportingLayout.this,"Data berhasil ditambahkan", Toast.LENGTH_LONG).
+//                        show();
+//            }
+//        });
     }
 
 

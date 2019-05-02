@@ -20,7 +20,7 @@ import java.util.Map;
 
 public class StokMakanan extends AppCompatActivity {
 
-    EditText etPakan;
+    EditText etPakan,etPakan2;
     Button button_save;
     // Access a Cloud Firestore instance from your Activity
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -30,7 +30,8 @@ public class StokMakanan extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hasil_ternak);
 
-        etPakan = findViewById(R.id.edittext);
+        etPakan = findViewById(R.id.editText);
+        etPakan2 = findViewById(R.id.editText2);
         button_save = findViewById(R.id.button);
 
         button_save.setOnClickListener(new View.OnClickListener() {
