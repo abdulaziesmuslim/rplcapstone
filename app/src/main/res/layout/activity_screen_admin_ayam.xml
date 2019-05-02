@@ -33,15 +33,6 @@
             app:srcCompat="@drawable/profile" />
 
         <TextView
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Your Name Here"
-            android:textColor="#FCFFFD"
-            android:textSize="12dp" />
-
-        <TextView
             android:id="@+id/position"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
