@@ -7,15 +7,26 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ScreenAdmin extends AppCompatActivity {
+    TextView  position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen_admin);
+        position = findViewById(R.id.position);
+
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+
+
+        if (firebaseAuth.getCurrentUser().getEmail().equals("adminsapikuternak@gmail.com")) {
+
+            position.setText("ADMIN");
+        }
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

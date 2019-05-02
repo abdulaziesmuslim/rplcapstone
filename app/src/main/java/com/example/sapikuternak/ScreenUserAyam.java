@@ -7,16 +7,46 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ScreenUserAyam extends AppCompatActivity {
+    TextView name, position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen_user_ayam);
+
+        name = findViewById(R.id.name);
+        position = findViewById(R.id.position);
+
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+
+    if(firebaseAuth.getCurrentUser().getEmail().equals("sultanmartzael@gmail.com")){
+        name.setText("Marsel");
+        position.setText("Employee");
+    }else if(firebaseAuth.getCurrentUser().getEmail().equals("user@gmail.com")){
+        name.setText("User");
+        position.setText("Employee");
+    }else if(firebaseAuth.getCurrentUser().getEmail().equals("nauragm@gmail.com")){
+        name.setText("Naura");
+        position.setText("Employee");
+    }else if(firebaseAuth.getCurrentUser().getEmail().equals("helmixdjs2@gmail.com")){
+        name.setText("Helmi");
+        position.setText("Employee");
+    }else if(firebaseAuth.getCurrentUser().getEmail().equals("dikamahar03@gmail.com")) {
+        name.setText("Mahardika");
+        position.setText("Employee");
+    }else if(firebaseAuth.getCurrentUser().getEmail().equals("arethafatharani3@gmail.com")) {
+        name.setText("Aretha");
+        position.setText("Employee");
+    }else if(firebaseAuth.getCurrentUser().getEmail().equals("abdulazies55@gmail.com")) {
+        name.setText("Abdul Azies");
+        position.setText("Employee");
     }
+}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
