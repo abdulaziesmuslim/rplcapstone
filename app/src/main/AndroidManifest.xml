@@ -11,12 +11,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 7e25185620ba676ac259eb4aa05156fbb2b8741b
         <activity android:name=".JumlahSapiEmployee"></activity>
         <activity android:name=".JumlahAyamEmployee" />
         <activity android:name=".JumlahSapiAdmin" />
         <activity android:name=".JumlahAyamAdmin" />
         <activity android:name=".ViewTernakActivity" />
         <activity android:name=".Dashboard" />
+<<<<<<< HEAD
+=======
+        <activity android:name=".ViewTernakActivity"></activity>
+        <activity android:name=".Dashboard"></activity>
+>>>>>>> 1dca5ee64ed1377689922692cc4a945d40dd0520
+=======
+>>>>>>> 7e25185620ba676ac259eb4aa05156fbb2b8741b
         <activity android:name=".HasilTernak" />
         <activity android:name=".ScreenUserAyam" />
         <activity android:name=".pilihhewanuser" />
